@@ -28,7 +28,7 @@ class Socials {
   static bool subsribe_on_tapping_channel = false;
   static String subs_channel_endPoints = "?sub_confirmation=1";
 
-  static String channel_url = "https://www.youtube.com/@toilet847";
+  static String channel_url = "https://www.youtube.com/@melonsandboxgameplay";
 
   static void onTapYT() async {
     if (subsribe_on_tapping_channel) {

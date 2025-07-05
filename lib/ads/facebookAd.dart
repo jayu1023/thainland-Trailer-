@@ -1,9 +1,13 @@
 import 'dart:developer';
 
+import 'package:camaramanmodmelon/ads_copy/adManager.dart';
+import 'package:camaramanmodmelon/ads_copy/appLifeCyclecontroller.dart';
 import 'package:facebook_audience_network/ad/ad_native.dart';
 import 'package:facebook_audience_network/facebook_audience_network.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class Facebook {
   static List<String> native_ids = [
@@ -40,6 +44,9 @@ class Facebook {
           alignment: Alignment.center,
           children: [
             const Text("Reserve For Ads Space"),
+            SizedBox(height: 250,width: Get.width,),
+             appLifeCycleController.adsConstant.adData?.nativeAd?.screens?.contains(2)==true? Admanager().getNativeAd():SizedBox(height: 250,width: Get.width,)
+            /*
             ClipRRect(
               borderRadius: BorderRadius.circular(6.0),
               child: FacebookNativeAd(
@@ -70,6 +77,7 @@ class Facebook {
                 expandAnimationDuraion: 00,
               ),
             ),
+          */
           ],
         ),
       ),

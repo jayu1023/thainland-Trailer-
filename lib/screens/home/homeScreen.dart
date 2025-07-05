@@ -2,6 +2,8 @@ import 'package:camaramanmodmelon/ads/adsMainClause.dart';
 
 import 'package:camaramanmodmelon/ads/applovinad.dart';
 import 'package:camaramanmodmelon/ads/soCials.dart';
+import 'package:camaramanmodmelon/ads_copy/adManager.dart';
+import 'package:camaramanmodmelon/ads_copy/appLifeCyclecontroller.dart';
 import 'package:camaramanmodmelon/screens/home/controller/HomeController.dart';
 import 'package:camaramanmodmelon/screens/home/widgets/itemCard.dart';
 import 'package:camaramanmodmelon/utils/ads.dart';
@@ -18,7 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:get/get.dart';
 import 'package:in_app_review/in_app_review.dart';
-
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -163,7 +165,7 @@ class HomeScreen extends GetView<HomeController> {
       ),
       child: Scaffold(
         bottomNavigationBar: Container(
-          child: AdMainClause.getBannerAd(),
+          child:appLifeCycleController.adsConstant.adData?.bannerAd?.screens?.contains(1)==true?Admanager().getBannerAd():SizedBox.shrink(),
         ),
         backgroundColor: AppColors.TextColor,
         appBar: AppBar(
@@ -257,7 +259,9 @@ class HomeScreen extends GetView<HomeController> {
                         },
                         itemCount: controller.mods.length,
                         separatorBuilder: (BuildContext context, int index) {
-                          return AdMainClause.getNativeAd(index);
+                          return  appLifeCycleController.adsConstant.adData?.nativeAd?.screens?.contains(1)==true?Admanager().getNativeAd() :SizedBox.shrink();
+                          
+                          // AdMainClause.getNativeAd(index);
                           // controller.currentIndex.value = index;
                           // return ItemCard(index: ,);
                         },

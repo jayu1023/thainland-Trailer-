@@ -7,6 +7,7 @@ import 'package:camaramanmodmelon/utils/ads.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 
 /**
@@ -16,6 +17,7 @@ import 'package:unity_ads_plugin/unity_ads_plugin.dart';
 
 class AdMainClause {
   static init() async {
+    await MobileAds.instance.initialize();
     await UnityAdModel.initUnityAd();
     await Facebook.init();
   }

@@ -1,4 +1,6 @@
 import 'package:camaramanmodmelon/ads/adsMainClause.dart';
+import 'package:camaramanmodmelon/ads_copy/adManager.dart';
+import 'package:camaramanmodmelon/ads_copy/appLifeCyclecontroller.dart';
 
 import 'package:camaramanmodmelon/model/apiModel.dart';
 import 'package:camaramanmodmelon/screens/home/controller/HomeController.dart';
@@ -23,9 +25,10 @@ class ItemCard extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
+      onTap: ()async {
         EasyLoading.show();
-        AdMainClause.getInterAd(() {
+      await  appLifeCycleController.adsConstant.adData?.indAd?.screens?.contains(1)==true?Admanager.getIndAd():null;
+        
           EasyLoading.dismiss();
           Navigation.navigateToDetaildScreen(
             model,
@@ -34,7 +37,7 @@ class ItemCard extends GetView<HomeController> {
             model.download.toString(),
             model.images.toString(),
           );
-        });
+     
         // if (Inte.currentClickCounterInter %
         //         AppAdsParameter.countNative ==
         //     0) {

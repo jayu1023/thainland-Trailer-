@@ -1,5 +1,7 @@
 import 'package:camaramanmodmelon/ads/adsMainClause.dart';
 import 'package:camaramanmodmelon/ads/facebookAd.dart';
+import 'package:camaramanmodmelon/ads_copy/adManager.dart';
+import 'package:camaramanmodmelon/ads_copy/appLifeCyclecontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -14,6 +16,7 @@ class _InstructionScreenState extends State<InstructionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: Text("Instructions to Install Mod"),
       ),
@@ -127,7 +130,11 @@ class _InstructionScreenState extends State<InstructionScreen> {
                   fontWeight: FontWeight.w600),
             ),
             SizedBox(
-              height: 4.h,
+              height: 2.h,
+            ),
+             Facebook.getNativeAd(),
+            SizedBox(
+              height: 2.h,
             ),
             Image.asset("assets/7.png",
                 height: MediaQuery.of(context).size.height * 0.3),
@@ -139,13 +146,15 @@ class _InstructionScreenState extends State<InstructionScreen> {
                   fontSize: 17.sp,
                   fontWeight: FontWeight.w600),
             ),
+            SizedBox(height: 2.h,),
+            appLifeCycleController.adsConstant.adData?.nativeAd?.screens?.contains(3)==true?Admanager().getSmallNativeAd():SizedBox.shrink(),
             SizedBox(
               height: 20.h,
             )
           ],
         ),
       ),
-      bottomNavigationBar: AdMainClause.getBannerAd(),
+      bottomNavigationBar: appLifeCycleController.adsConstant.adData?.bannerAd?.screens?.contains(2)==true?Admanager().getBannerAd():SizedBox.shrink(),
     );
   }
 }
